@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 
 import './Country.css';
 
-const Country = ({country}) => {
+const Country = ({ country, handlevisitedCountries }) => {
     // console.log(country);
+    // console.log(handlevisitedCountries);
 
     // Handle BTN: Visited or not?
-    const[visited, setVisited] = useState(false);
+    const [visited, setVisited] = useState(false);
 
-    const handleVisited = ()=>{
+    const handleVisited = () => {
         // console.log('BTN Clicked');
 
         /*
@@ -27,9 +28,11 @@ const Country = ({country}) => {
         */
 
         // WOW System: True - flase game:
-        setVisited(!visited);       
+        setVisited(!visited);
+
+        handlevisitedCountries(country);
     }
-    
+
 
     return (
 
@@ -37,14 +40,14 @@ const Country = ({country}) => {
         <div className={`country ${visited && 'country-visited'}`}>
 
             {/* <img src={country.flags.flags.png} alt={country.flags.flags.alt} /> */}
-            <img src={country?.flags?.flags?.png} alt={country.flags.flags.alt} />
+            <img src={country?.flags?.flags?.png} alt={country?.flags?.flags?.alt} />
 
             <h3>Name: {country.name.common} </h3>
 
             <p>Population: {country.population.population} </p>
 
             {/* Conditional Rendaring: JS: {} */}
-            <p>Area: {country.area.area} 
+            <p>Area: {country.area.area}
                 {
                     country.area.area > 30000 ? "Big Country" : "Samall Country"
                 } </p>
@@ -52,6 +55,7 @@ const Country = ({country}) => {
             <button onClick={handleVisited}>
                 {visited ? "Visited" : "Not Visited"}
             </button>
+            <button>Add Visited Flag</button>
 
         </div>
     );
