@@ -20,7 +20,7 @@ function App() {
         <Countries countiresPromise={countiresPromise}></Countries>
 
       </Suspense>
-      
+
     </>
   )
 }
